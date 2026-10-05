@@ -1,776 +1,1387 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-
-<title>Formatura Heloisa • Direito</title>
-
-<style>
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  background: #170004;
-  color: #fff;
-  font-family: Georgia, 'Times New Roman', serif;
-  min-height: 100%;
-  overflow-x: hidden;
-}
-
-.screen {
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  position: relative;
-  background:
-    radial-gradient(
-      circle at 50% 25%,
-      #5b0711 0,
-      #260006 46%,
-      #090002 100%
-    );
-}
-
-.screen:before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      120deg,
-      transparent 20%,
-      rgba(255,213,126,.06),
-      transparent 45%
-    );
-  pointer-events: none;
-}
-
-.envelope {
-  width: min(88vw,430px);
-  aspect-ratio: .72;
-  background: linear-gradient(145deg,#8e0b17,#420008);
-  box-shadow:
-    0 30px 80px #000a,
-    inset 0 0 0 1px #d7a84766;
-
-  position: relative;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 28px;
-  cursor: pointer;
-  transition: .7s;
-  border-radius: 4px;
-}
-
-.envelope:after {
-  content: '';
-  position: absolute;
-  inset: 0;
-
-  clip-path:
-    polygon(
-      0 0,
-      50% 48%,
-      100% 0,
-      100% 100%,
-      0 100%
-    );
-
-  background:
-    linear-gradient(
-      160deg,
-      #6f0711,
-      #350006
-    );
-
-  z-index: 0;
-}
-
-.front {
-  z-index: 2;
-}
-
-.eyebrow {
-  letter-spacing: .16em;
-  font-size: 12px;
-  color: #f4e1c4;
-}
-
-.name {
-  font-size: clamp(31px,9vw,48px);
-  line-height: 1.03;
-  color: #f2d493;
-  margin: 16px 0 10px;
-}
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#160003"
+  >
+
+  <meta
+    name="description"
+    content="Convite de Formatura em Direito de Heloisa Fernanda Galvão Romualdo"
+  >
+
+  <title>
+    Formatura Heloisa • Direito
+  </title>
+
+  <style>
+
+    /* =========================================
+       RESET
+    ========================================= */
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      background: #080001;
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      overscroll-behavior: none;
+    }
 
-.degree {
-  letter-spacing: .12em;
-  font-size: 16px;
-}
+    button {
+      font-family: inherit;
+    }
 
-.seal {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  margin: 30px auto 22px;
-
-  background:
-    radial-gradient(
-      circle at 35% 30%,
-      #e95050,
-      #8b0712 45%,
-      #3b0005 100%
-    );
-
-  border: 5px double #f47b78;
-  box-shadow: 0 10px 25px #0008;
-
-  display: grid;
-  place-items: center;
-
-  font-size: 38px;
-}
-
-.tap {
-  font-size: 13px;
-  letter-spacing: .13em;
-  color: #f8e7d0;
-}
-
-/* CONVITE */
-
-.invite {
-  display: none;
-  background: #080002;
-}
-
-.invite.show {
-  display: block;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 100svh;
-
-  background:
-    linear-gradient(#0007,#0009),
-    url('convite-final.png')
-    center 14% / 300% auto
-    no-repeat;
-
-  display: flex;
-  align-items: flex-end;
-
-  padding: 38px 22px;
-}
-
-.heroCard {
-  width: min(560px,100%);
-  margin: auto;
-
-  background: #100005d9;
-
-  border: 1px solid #c8954f80;
-
-  backdrop-filter: blur(8px);
-
-  padding: 28px;
-
-  text-align: center;
-
-  box-shadow:
-    0 20px 70px #000;
-}
-
-.heroCard h1 {
-  font-size: 36px;
-  color: #eacb88;
-  margin: 0 0 8px;
-}
-
-.heroCard p {
-  line-height: 1.6;
-  margin: 10px 0;
-}
-
-.gold {
-  color: #e9c77c;
-}
-
-/* SEÇÕES */
 
-.section {
-  padding: 60px 20px;
-  max-width: 700px;
-  margin: auto;
-  text-align: center;
-}
-
-.section h2 {
-  font-size: 32px;
-  color: #e9c77c;
-  margin: 0 0 20px;
-}
+    /* =========================================
+       TELA DE ABERTURA
+    ========================================= */
 
-.section p {
-  font-size: 17px;
-  line-height: 1.7;
-}
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
 
-.details {
-  display: grid;
-  gap: 14px;
-  margin: 28px auto;
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-.card {
-  border: 1px solid #c7954d70;
+      background:
+        radial-gradient(
+          circle at 50% 25%,
+          #650b17 0%,
+          #270006 45%,
+          #080001 100%
+        );
 
-  background:
-    linear-gradient(
-      145deg,
-      #310008,
-      #140003
-    );
+      transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+    }
 
-  padding: 22px;
-  border-radius: 18px;
-}
+    #intro.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
 
-.big {
-  font-size: 26px;
-  color: #f0d393;
-}
 
-/* VALORES */
+    /* brilho decorativo */
 
-.prices {
-  display: grid;
-  gap: 16px;
-}
+    #intro::before {
+      content: "";
+      position: absolute;
+      inset: 0;
 
-.price h3 {
-  font-size: 25px;
-  color: #f0d393;
-  margin: 0 0 10px;
-}
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(255, 215, 150, 0.08),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(255, 215, 150, 0.06),
+          transparent 25%
+        );
 
-.price strong {
-  color: #fff;
-}
+      pointer-events: none;
+    }
 
-/* FOTO */
 
-.portrait {
-  min-height: 78svh;
+    /* =========================================
+       CAPA
+    ========================================= */
 
-  background:
-    url('convite-final.png')
-    center 49% / 300% auto
-    no-repeat;
+    .cover-wrapper {
+      position: relative;
 
-  border-top: 1px solid #b8864660;
-  border-bottom: 1px solid #b8864660;
-}
+      width: min(92vw, 430px);
+      max-height: 92vh;
 
-.fun {
-  font-size: 21px;
-  font-style: italic;
-  color: #f0d393;
-}
+      display: flex;
+      justify-content: center;
 
-/* BOTÃO */
+      animation: coverEntrance 1.2s ease both;
+    }
 
-.cta {
-  display: inline-block;
+    .cover-image {
+      display: block;
 
-  margin-top: 20px;
-  padding: 15px 22px;
+      max-width: 100%;
+      max-height: 88vh;
 
-  border: 1px solid #e6c678;
-  border-radius: 999px;
+      width: auto;
+      height: auto;
 
-  color: #fff;
-  text-decoration: none;
+      object-fit: contain;
 
-  background: #650914;
-}
+      border-radius: 4px;
 
-/* FOOTER */
+      box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.8),
+        0 0 50px rgba(180, 30, 45, 0.18);
 
-.footer {
-  padding: 40px 20px 70px;
-  text-align: center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
 
-  color: #d9c9bd;
-  font-size: 13px;
-}
 
-/* ANIMAÇÕES */
+    /* botão invisível cobrindo a capa */
 
-.fade {
-  opacity: 0;
-  transform: translateY(18px);
+    .open-button {
+      position: absolute;
+      inset: 0;
 
-  transition: .8s;
-}
+      border: 0;
+      background: transparent;
 
-.fade.in {
-  opacity: 1;
-  transform: none;
-}
+      cursor: pointer;
+    }
 
-@media(min-width:700px) {
 
-  .prices {
-    grid-template-columns: 1fr 1fr;
-  }
+    /* indicação inferior */
 
-  .hero {
-    background-size: 190% auto;
-  }
+    .open-hint {
+      position: absolute;
 
-  .portrait {
-    background-size: 190% auto;
-  }
-}
-</style>
+      bottom: 4%;
+      left: 50%;
 
+      transform: translateX(-50%);
+
+      padding: 9px 16px;
+
+      border-radius: 999px;
+
+      background: rgba(0, 0, 0, 0.45);
+
+      border:
+        1px solid
+        rgba(240, 204, 135, 0.55);
+
+      color: #f3d699;
+
+      font-size: 11px;
+      letter-spacing: 0.16em;
+
+      white-space: nowrap;
+
+      backdrop-filter: blur(6px);
+
+      animation: pulse 1.8s infinite;
+    }
+
+
+    /* =========================================
+       EXPERIÊNCIA PRINCIPAL
+    ========================================= */
+
+    #experience {
+      position: fixed;
+      inset: 0;
+
+      display: none;
+
+      background:
+        radial-gradient(
+          circle at 50% 20%,
+          #350007,
+          #0a0002 65%
+        );
+
+      overflow: hidden;
+    }
+
+    #experience.active {
+      display: block;
+    }
+
+
+    /* =========================================
+       SLIDER
+    ========================================= */
+
+    .slider {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+
+      transition:
+        transform 0.7s
+        cubic-bezier(.77, 0, .18, 1);
+
+      will-change: transform;
+    }
+
+
+    /* =========================================
+       CADA SLIDE
+    ========================================= */
+
+    .slide {
+      position: relative;
+
+      min-width: 100vw;
+      width: 100vw;
+      height: 100dvh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        max(16px, env(safe-area-inset-top))
+        16px
+        max(72px, env(safe-area-inset-bottom));
+
+      overflow: hidden;
+    }
+
+
+    /* fundo desfocado usando a própria imagem */
+
+    .slide-background {
+      position: absolute;
+      inset: -30px;
+
+      background-image: var(--background);
+      background-position: center;
+      background-size: cover;
+
+      filter:
+        blur(28px)
+        brightness(0.28)
+        saturate(1.25);
+
+      transform: scale(1.12);
+
+      opacity: 0.9;
+    }
+
+
+    /* vinheta */
+
+    .slide::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          ellipse at center,
+          transparent 45%,
+          rgba(0, 0, 0, 0.55) 100%
+        );
+
+      pointer-events: none;
+    }
+
+
+    /* imagem inteira */
+
+    .slide-image {
+      position: relative;
+      z-index: 2;
+
+      display: block;
+
+      width: auto;
+      height: auto;
+
+      max-width: min(94vw, 600px);
+      max-height: calc(100dvh - 100px);
+
+      object-fit: contain;
+
+      border-radius: 3px;
+
+      box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.75);
+
+      user-select: none;
+      -webkit-user-drag: none;
+
+      opacity: 0;
+
+      transform:
+        scale(0.965)
+        translateY(12px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.9s ease;
+    }
+
+
+    /* slide ativo */
+
+    .slide.active .slide-image {
+      opacity: 1;
+
+      transform:
+        scale(1)
+        translateY(0);
+    }
+
+
+    /* =========================================
+       SETAS
+    ========================================= */
+
+    .nav-button {
+      position: fixed;
+
+      top: 50%;
+
+      z-index: 20;
+
+      width: 48px;
+      height: 48px;
+
+      transform: translateY(-50%);
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(236, 203, 133, 0.6);
+
+      background:
+        rgba(25, 0, 4, 0.7);
+
+      color: #f0d393;
+
+      font-size: 27px;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      backdrop-filter: blur(8px);
+
+      transition:
+        opacity 0.3s,
+        transform 0.3s,
+        background 0.3s;
+    }
+
+    .nav-button:hover {
+      background:
+        rgba(100, 8, 20, 0.9);
+    }
+
+    .nav-button:active {
+      transform:
+        translateY(-50%)
+        scale(0.9);
+    }
+
+    #previous {
+      left: 14px;
+    }
+
+    #next {
+      right: 14px;
+    }
+
+    .nav-button.disabled {
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+
+    /* =========================================
+       CONTADOR
+    ========================================= */
+
+    .counter {
+      position: fixed;
+
+      top:
+        max(
+          15px,
+          env(safe-area-inset-top)
+        );
+
+      right: 18px;
+
+      z-index: 25;
+
+      padding: 8px 13px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(10, 0, 2, 0.65);
+
+      border:
+        1px solid
+        rgba(232, 198, 124, 0.35);
+
+      color: #efd18e;
+
+      font-size: 12px;
+
+      letter-spacing: 0.1em;
+
+      backdrop-filter: blur(8px);
+    }
+
+
+    /* =========================================
+       INDICADORES INFERIORES
+    ========================================= */
+
+    .pagination {
+      position: fixed;
+
+      left: 50%;
+
+      bottom:
+        max(
+          20px,
+          env(safe-area-inset-bottom)
+        );
+
+      transform: translateX(-50%);
+
+      z-index: 30;
+
+      display: flex;
+
+      gap: 8px;
+
+      padding: 10px 13px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(12, 0, 2, 0.65);
+
+      border:
+        1px solid
+        rgba(232, 198, 124, 0.25);
+
+      backdrop-filter: blur(8px);
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+
+      border: 0;
+      padding: 0;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255, 255, 255, 0.28);
+
+      cursor: pointer;
+
+      transition:
+        width 0.3s,
+        background 0.3s;
+    }
+
+    .dot.active {
+      width: 22px;
+
+      border-radius: 20px;
+
+      background: #e8c77f;
+    }
+
+
+    /* =========================================
+       TEXTO DE SWIPE
+    ========================================= */
+
+    .swipe-hint {
+      position: fixed;
+
+      bottom:
+        max(
+          62px,
+          calc(env(safe-area-inset-bottom) + 52px)
+        );
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      z-index: 25;
+
+      color:
+        rgba(255, 255, 255, 0.55);
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      font-size: 10px;
+
+      letter-spacing: 0.13em;
+
+      white-space: nowrap;
+
+      pointer-events: none;
+
+      transition: opacity 0.5s;
+    }
+
+
+    /* =========================================
+       ANIMAÇÕES
+    ========================================= */
+
+    @keyframes coverEntrance {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(25px)
+          scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
+    }
+
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform:
+          translateX(-50%)
+          scale(1);
+      }
+
+      50% {
+        transform:
+          translateX(-50%)
+          scale(1.04);
+      }
+
+    }
+
+
+    /* =========================================
+       DESKTOP
+    ========================================= */
+
+    @media (min-width: 800px) {
+
+      .slide-image {
+        max-width: min(86vw, 630px);
+        max-height: calc(100vh - 70px);
+      }
+
+      .nav-button {
+        width: 54px;
+        height: 54px;
+      }
+
+      #previous {
+        left: 30px;
+      }
+
+      #next {
+        right: 30px;
+      }
+
+    }
+
+
+    /* =========================================
+       CELULAR
+    ========================================= */
+
+    @media (max-width: 600px) {
+
+      .slide {
+        padding:
+          max(8px, env(safe-area-inset-top))
+          7px
+          max(68px, env(safe-area-inset-bottom));
+      }
+
+      .slide-image {
+        max-width: 97vw;
+        max-height: calc(100dvh - 78px);
+      }
+
+      .nav-button {
+        width: 39px;
+        height: 39px;
+
+        font-size: 22px;
+
+        background:
+          rgba(10, 0, 2, 0.52);
+      }
+
+      #previous {
+        left: 5px;
+      }
+
+      #next {
+        right: 5px;
+      }
+
+      .counter {
+        top:
+          max(
+            8px,
+            env(safe-area-inset-top)
+          );
+
+        right: 9px;
+      }
+
+    }
+
+
+    /* =========================================
+       TELAS BAIXAS
+    ========================================= */
+
+    @media (max-height: 700px) {
+
+      .slide-image {
+        max-height: calc(100dvh - 60px);
+      }
+
+      .pagination {
+        bottom: 8px;
+      }
+
+      .swipe-hint {
+        display: none;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
-<!-- =========================
-     CAPA / ENVELOPE
-========================= -->
 
-<main id="cover" class="screen">
+<!-- =========================================
+     ABERTURA
+========================================= -->
 
-  <div class="envelope" onclick="openInvite()">
+<section id="intro">
 
-    <div class="front">
+  <div class="cover-wrapper">
 
-      <div class="eyebrow">
-        CONVITE ESPECIAL DE
-      </div>
+    <img
+      class="cover-image"
+      src="assets/slide-01-capa.png"
+      alt="Convite de formatura de Heloisa Fernanda Galvão Romualdo"
+    >
 
-      <div class="name">
-        HELOISA<br>
-        FERNANDA GALVÃO<br>
-        ROMUALDO
-      </div>
+    <button
+      class="open-button"
+      type="button"
+      aria-label="Abrir convite"
+      onclick="openInvitation()"
+    ></button>
 
-      <div class="degree">
-        FORMATURA EM DIREITO
-      </div>
-
-      <div class="seal">
-        ⚜
-      </div>
-
-      <div class="tap">
-        TOQUE PARA ABRIR
-      </div>
-
+    <div class="open-hint">
+      TOQUE PARA ABRIR
     </div>
 
   </div>
+
+</section>
+
+
+
+<!-- =========================================
+     EXPERIÊNCIA
+========================================= -->
+
+<main id="experience">
+
+  <div
+    id="slider"
+    class="slider"
+  >
+
+
+    <!-- SLIDE 02 -->
+
+    <section
+      class="slide active"
+      style="
+        --background:
+        url('assets/slide-02-direito.png')
+      "
+    >
+
+      <div class="slide-background"></div>
+
+      <img
+        class="slide-image"
+        src="assets/slide-02-direito.png"
+        alt="Formatura em Direito"
+      >
+
+    </section>
+
+
+    <!-- SLIDE 03 -->
+
+    <section
+      class="slide"
+      style="
+        --background:
+        url('assets/slide-03-convite.png')
+      "
+    >
+
+      <div class="slide-background"></div>
+
+      <img
+        class="slide-image"
+        src="assets/slide-03-convite.png"
+        alt="Mensagem do convite"
+      >
+
+    </section>
+
+
+    <!-- SLIDE 04 -->
+
+    <section
+      class="slide"
+      style="
+        --background:
+        url('assets/slide-04-data-local.png')
+      "
+    >
+
+      <div class="slide-background"></div>
+
+      <img
+        class="slide-image"
+        src="assets/slide-04-data-local.png"
+        alt="Data, horário e local"
+      >
+
+    </section>
+
+
+    <!-- SLIDE 05 -->
+
+    <section
+      class="slide"
+      style="
+        --background:
+        url('assets/slide-05-festa.png')
+      "
+    >
+
+      <div class="slide-background"></div>
+
+      <img
+        class="slide-image"
+        src="assets/slide-05-festa.png"
+        alt="Informações da comemoração"
+      >
+
+    </section>
+
+
+    <!-- SLIDE 06 -->
+
+    <section
+      class="slide"
+      style="
+        --background:
+        url('assets/slide-06-criancas.png')
+      "
+    >
+
+      <div class="slide-background"></div>
+
+      <img
+        class="slide-image"
+        src="assets/slide-06-criancas.png"
+        alt="Informações para crianças"
+      >
+
+    </section>
+
+
+    <!-- SLIDE 07 -->
+
+    <section
+      class="slide"
+      style="
+        --background:
+        url('assets/slide-07-dress-code.png')
+      "
+    >
+
+      <div class="slide-background"></div>
+
+      <img
+        class="slide-image"
+        src="assets/slide-07-dress-code.png"
+        alt="Dress code"
+      >
+
+    </section>
+
+
+    <!-- SLIDE 08 -->
+
+    <section
+      class="slide"
+      style="
+        --background:
+        url('assets/slide-08-formanda.png')
+      "
+    >
+
+      <div class="slide-background"></div>
+
+      <img
+        class="slide-image"
+        src="assets/slide-08-formanda.png"
+        alt="Heloisa celebrando sua formatura"
+      >
+
+    </section>
+
+
+    <!-- SLIDE 09 -->
+
+    <section
+      class="slide"
+      style="
+        --background:
+        url('assets/slide-09-valores.png')
+      "
+    >
+
+      <div class="slide-background"></div>
+
+      <img
+        class="slide-image"
+        src="assets/slide-09-valores.png"
+        alt="Valores dos convites"
+      >
+
+    </section>
+
+  </div>
+
+
+
+  <!-- =======================================
+       CONTADOR
+  ======================================== -->
+
+  <div
+    id="counter"
+    class="counter"
+  >
+    1 / 8
+  </div>
+
+
+
+  <!-- =======================================
+       SETA ANTERIOR
+  ======================================== -->
+
+  <button
+    id="previous"
+    class="nav-button disabled"
+    type="button"
+    aria-label="Slide anterior"
+    onclick="previousSlide()"
+  >
+    ‹
+  </button>
+
+
+
+  <!-- =======================================
+       SETA PRÓXIMA
+  ======================================== -->
+
+  <button
+    id="next"
+    class="nav-button"
+    type="button"
+    aria-label="Próximo slide"
+    onclick="nextSlide()"
+  >
+    ›
+  </button>
+
+
+
+  <!-- =======================================
+       AJUDA
+  ======================================== -->
+
+  <div
+    id="swipeHint"
+    class="swipe-hint"
+  >
+    DESLIZE PARA CONTINUAR
+  </div>
+
+
+
+  <!-- =======================================
+       PAGINAÇÃO
+  ======================================== -->
+
+  <div
+    id="pagination"
+    class="pagination"
+  ></div>
 
 </main>
 
 
-<!-- =========================
-     CONVITE
-========================= -->
-
-<div id="invite" class="invite">
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-  <div class="heroCard fade">
-
-    <div class="gold">
-      É OFICIAL!
-    </div>
-
-    <h1>
-      Direito
-    </h1>
-
-    <p>
-      Mais que um diploma,<br>
-      <strong>
-        é a realização de um sonho!
-      </strong>
-    </p>
-
-    <p>
-      Heloisa Fernanda Galvão Romualdo
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- MENSAGEM -->
-
-<section class="section fade">
-
-  <h2>
-    Convite
-  </h2>
-
-  <p>
-    Entre sonhos, aprendizados e incontáveis desafios,
-    escrevi um capítulo que hoje se transforma em conquista.
-  </p>
-
-  <p>
-    E com imensa alegria, convido você para celebrar
-    minha formatura em Direito e tornar esse momento
-    ainda mais especial.
-  </p>
-
-  <p class="gold">
-    Obrigada por todo o apoio durante essa caminhada!
-  </p>
-
-</section>
-
-
-<!-- DATA / HORÁRIO / LOCAL -->
-
-<section class="section fade">
-
-  <h2>
-    16 de janeiro de 2027
-  </h2>
-
-  <div class="details">
-
-    <div class="card">
-
-      <div class="big">
-        Jantar • 21h00 às 06h00
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="big">
-        Baile • 23h59 às 06h00
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="big">
-        Centro de Eventos
-      </div>
-
-      <p>
-        Harmonia Clube de Campo<br>
-        Umuarama – PR
-      </p>
-
-    </div>
-
-  </div>
-
-  <p class="fun">
-    “Será um prazer ter você comigo neste momento único!”
-  </p>
-
-</section>
-
-
-<!-- FOTO -->
-
-<div class="portrait"></div>
-
-
-<!-- FESTA -->
-
-<section class="section fade">
-
-  <h2>
-    Agora vamos comemorar!
-  </h2>
-
-  <p class="fun">
-    Open food, open bar e muita música até o amanhecer.
-  </p>
-
-  <p>
-    Depois de tantos códigos, processos, provas e surtos…
-    <strong>
-      agora é hora de brindar!
-    </strong>
-  </p>
-
-</section>
-
-
-<!-- CRIANÇAS -->
-
-<section class="section fade">
-
-  <h2>
-    Crianças
-  </h2>
-
-  <div class="details">
-
-    <div class="card">
-
-      <div class="big">
-        Até 5 anos
-      </div>
-
-      <p>
-        Não pagam e não precisam de convite.
-      </p>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="big">
-        De 6 a 10 anos
-      </div>
-
-      <p>
-        Pagam meia-entrada.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DRESS CODE -->
-
-<section class="section fade">
-
-  <h2>
-    Dress code
-  </h2>
-
-  <div class="card">
-
-    <div class="big">
-      Traje: esporte fino
-    </div>
-
-    <p>
-      Venha elegante, mas acima de tudo,
-      venha para se divertir e celebrar comigo!
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- VALORES -->
-
-<section class="section fade">
-
-  <h2>
-    Valores dos convites
-  </h2>
-
-  <p class="fun">
-    Uma noite dessas não tem preço…
-    mas o buffet mandou a conta. 😄
-  </p>
-
-  <p>
-    Os valores abaixo correspondem aos convites adicionais
-    para compartilhar comigo esta data tão especial.
-  </p>
-
-
-  <div class="prices">
-
-
-    <!-- JANTAR -->
-
-    <div class="card price">
-
-      <h3>
-        Jantar
-      </h3>
-
-      <p>
-        21h00 às 06h00
-      </p>
-
-      <p>
-
-        <strong>
-          Inteira
-        </strong>
-
-        <br>
-
-        R$ 520,00 à vista / boleto
-
-        <br>
-
-        R$ 572,00 em até 12x no cartão
-
-      </p>
-
-
-      <p>
-
-        <strong>
-          Meia
-        </strong>
-
-        <br>
-
-        R$ 260,00 à vista / boleto
-
-        <br>
-
-        R$ 286,00 em até 12x no cartão
-
-      </p>
-
-    </div>
-
-
-    <!-- BAILE -->
-
-    <div class="card price">
-
-      <h3>
-        Baile
-      </h3>
-
-      <p>
-        23h59 às 06h00
-      </p>
-
-      <p>
-
-        <strong>
-          Inteira
-        </strong>
-
-        <br>
-
-        R$ 440,00 à vista / boleto
-
-        <br>
-
-        R$ 484,00 em até 12x no cartão
-
-      </p>
-
-
-      <p>
-
-        <strong>
-          Meia
-        </strong>
-
-        <br>
-
-        R$ 220,00 à vista / boleto
-
-        <br>
-
-        R$ 242,00 em até 12x no cartão
-
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <p class="gold">
-    Você faz parte dessa conquista.
-    Conto com a sua presença!
-  </p>
-
-</section>
-
-
-<footer class="footer">
-
-  Heloisa Fernanda Galvão Romualdo
-  • Direito •
-  16.01.2027
-
-</footer>
-
-</div>
-
 
 <script>
 
-function openInvite() {
+  /* =========================================
+     CONFIGURAÇÃO
+  ========================================= */
 
-  document
-    .getElementById('cover')
-    .style.display = 'none';
+  let currentSlide = 0;
 
-  document
-    .getElementById('invite')
-    .classList.add('show');
+  const slider =
+    document.getElementById("slider");
 
-  window.scrollTo(0,0);
+  const slides =
+    Array.from(
+      document.querySelectorAll(".slide")
+    );
 
-  setTimeout(observe,80);
-}
+  const totalSlides =
+    slides.length;
+
+  const counter =
+    document.getElementById("counter");
+
+  const previousButton =
+    document.getElementById("previous");
+
+  const nextButton =
+    document.getElementById("next");
+
+  const pagination =
+    document.getElementById("pagination");
+
+  const swipeHint =
+    document.getElementById("swipeHint");
 
 
-function observe() {
 
-  const io = new IntersectionObserver(
+  /* =========================================
+     CRIA OS INDICADORES
+  ========================================= */
 
-    entries => entries.forEach(entry => {
+  slides.forEach((slide, index) => {
 
-      if(entry.isIntersecting) {
-        entry.target.classList.add('in');
-      }
+    const dot =
+      document.createElement("button");
 
-    }),
+    dot.type = "button";
 
-    {
-      threshold: .15
+    dot.className =
+      index === 0
+        ? "dot active"
+        : "dot";
+
+    dot.setAttribute(
+      "aria-label",
+      `Ir para slide ${index + 1}`
+    );
+
+    dot.addEventListener(
+      "click",
+      () => goToSlide(index)
+    );
+
+    pagination.appendChild(dot);
+
+  });
+
+
+
+  /* =========================================
+     ABRIR CONVITE
+  ========================================= */
+
+  function openInvitation() {
+
+    const intro =
+      document.getElementById("intro");
+
+    const experience =
+      document.getElementById("experience");
+
+    intro.classList.add("hidden");
+
+    experience.classList.add("active");
+
+    document.body.style.overflow =
+      "hidden";
+
+    goToSlide(0);
+
+  }
+
+
+
+  /* =========================================
+     IR PARA SLIDE
+  ========================================= */
+
+  function goToSlide(index) {
+
+    if (index < 0) {
+      index = 0;
     }
 
+    if (index >= totalSlides) {
+      index = totalSlides - 1;
+    }
+
+    currentSlide = index;
+
+    slider.style.transform =
+      `translateX(-${currentSlide * 100}vw)`;
+
+
+
+    /* slides ativos */
+
+    slides.forEach(
+      (slide, slideIndex) => {
+
+        slide.classList.toggle(
+          "active",
+          slideIndex === currentSlide
+        );
+
+      }
+    );
+
+
+
+    /* paginação */
+
+    const dots =
+      document.querySelectorAll(".dot");
+
+    dots.forEach(
+      (dot, dotIndex) => {
+
+        dot.classList.toggle(
+          "active",
+          dotIndex === currentSlide
+        );
+
+      }
+    );
+
+
+
+    /* contador */
+
+    counter.textContent =
+      `${currentSlide + 1} / ${totalSlides}`;
+
+
+
+    /* botões */
+
+    previousButton.classList.toggle(
+      "disabled",
+      currentSlide === 0
+    );
+
+    nextButton.classList.toggle(
+      "disabled",
+      currentSlide === totalSlides - 1
+    );
+
+
+
+    /* remove dica depois do primeiro avanço */
+
+    if (currentSlide > 0) {
+
+      swipeHint.style.opacity = "0";
+
+    }
+
+  }
+
+
+
+  /* =========================================
+     PRÓXIMO
+  ========================================= */
+
+  function nextSlide() {
+
+    if (
+      currentSlide <
+      totalSlides - 1
+    ) {
+
+      goToSlide(
+        currentSlide + 1
+      );
+
+    }
+
+  }
+
+
+
+  /* =========================================
+     ANTERIOR
+  ========================================= */
+
+  function previousSlide() {
+
+    if (
+      currentSlide > 0
+    ) {
+
+      goToSlide(
+        currentSlide - 1
+      );
+
+    }
+
+  }
+
+
+
+  /* =========================================
+     SWIPE MOBILE
+  ========================================= */
+
+  let touchStartX = 0;
+
+  let touchStartY = 0;
+
+  let touchEndX = 0;
+
+  let touchEndY = 0;
+
+
+
+  document.addEventListener(
+    "touchstart",
+    event => {
+
+      touchStartX =
+        event.changedTouches[0].screenX;
+
+      touchStartY =
+        event.changedTouches[0].screenY;
+
+    },
+    {
+      passive: true
+    }
   );
 
-  document
-    .querySelectorAll('.fade')
-    .forEach(element => io.observe(element));
 
-}
+
+  document.addEventListener(
+    "touchend",
+    event => {
+
+      touchEndX =
+        event.changedTouches[0].screenX;
+
+      touchEndY =
+        event.changedTouches[0].screenY;
+
+      handleSwipe();
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+
+  function handleSwipe() {
+
+    const horizontalDistance =
+      touchEndX - touchStartX;
+
+    const verticalDistance =
+      touchEndY - touchStartY;
+
+
+
+    /* evita interpretar rolagem vertical
+       como swipe horizontal */
+
+    if (
+      Math.abs(horizontalDistance) <
+      Math.abs(verticalDistance)
+    ) {
+      return;
+    }
+
+
+
+    const minimumSwipe = 45;
+
+
+
+    /* swipe para esquerda */
+
+    if (
+      horizontalDistance <
+      -minimumSwipe
+    ) {
+
+      nextSlide();
+
+    }
+
+
+
+    /* swipe para direita */
+
+    if (
+      horizontalDistance >
+      minimumSwipe
+    ) {
+
+      previousSlide();
+
+    }
+
+  }
+
+
+
+  /* =========================================
+     TECLADO NO COMPUTADOR
+  ========================================= */
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (
+        event.key === "ArrowRight"
+      ) {
+
+        nextSlide();
+
+      }
+
+      if (
+        event.key === "ArrowLeft"
+      ) {
+
+        previousSlide();
+
+      }
+
+    }
+  );
+
+
+
+  /* =========================================
+     PRELOAD DAS IMAGENS
+  ========================================= */
+
+  const images = [
+
+    "assets/slide-02-direito.png",
+
+    "assets/slide-03-convite.png",
+
+    "assets/slide-04-data-local.png",
+
+    "assets/slide-05-festa.png",
+
+    "assets/slide-06-criancas.png",
+
+    "assets/slide-07-dress-code.png",
+
+    "assets/slide-08-formanda.png",
+
+    "assets/slide-09-valores.png"
+
+  ];
+
+
+
+  images.forEach(
+    source => {
+
+      const image =
+        new Image();
+
+      image.src =
+        source;
+
+    }
+  );
 
 </script>
+
 
 </body>
 </html>
