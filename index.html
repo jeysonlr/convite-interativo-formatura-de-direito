@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>Formatura Heloisa • Direito</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  background: #170004;
+  color: #fff;
+  font-family: Georgia, 'Times New Roman', serif;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+.screen {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  position: relative;
+  background:
+    radial-gradient(
+      circle at 50% 25%,
+      #5b0711 0,
+      #260006 46%,
+      #090002 100%
+    );
+}
+
+.screen:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 20%,
+      rgba(255,213,126,.06),
+      transparent 45%
+    );
+  pointer-events: none;
+}
+
+.envelope {
+  width: min(88vw,430px);
+  aspect-ratio: .72;
+  background: linear-gradient(145deg,#8e0b17,#420008);
+  box-shadow:
+    0 30px 80px #000a,
+    inset 0 0 0 1px #d7a84766;
+
+  position: relative;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 28px;
+  cursor: pointer;
+  transition: .7s;
+  border-radius: 4px;
+}
+
+.envelope:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  clip-path:
+    polygon(
+      0 0,
+      50% 48%,
+      100% 0,
+      100% 100%,
+      0 100%
+    );
+
+  background:
+    linear-gradient(
+      160deg,
+      #6f0711,
+      #350006
+    );
+
+  z-index: 0;
+}
+
+.front {
+  z-index: 2;
+}
+
+.eyebrow {
+  letter-spacing: .16em;
+  font-size: 12px;
+  color: #f4e1c4;
+}
+
+.name {
+  font-size: clamp(31px,9vw,48px);
+  line-height: 1.03;
+  color: #f2d493;
+  margin: 16px 0 10px;
+}
+
+.degree {
+  letter-spacing: .12em;
+  font-size: 16px;
+}
+
+.seal {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 30px auto 22px;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #e95050,
+      #8b0712 45%,
+      #3b0005 100%
+    );
+
+  border: 5px double #f47b78;
+  box-shadow: 0 10px 25px #0008;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 38px;
+}
+
+.tap {
+  font-size: 13px;
+  letter-spacing: .13em;
+  color: #f8e7d0;
+}
+
+/* CONVITE */
+
+.invite {
+  display: none;
+  background: #080002;
+}
+
+.invite.show {
+  display: block;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100svh;
+
+  background:
+    linear-gradient(#0007,#0009),
+    url('convite-final.png')
+    center 14% / 300% auto
+    no-repeat;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: 38px 22px;
+}
+
+.heroCard {
+  width: min(560px,100%);
+  margin: auto;
+
+  background: #100005d9;
+
+  border: 1px solid #c8954f80;
+
+  backdrop-filter: blur(8px);
+
+  padding: 28px;
+
+  text-align: center;
+
+  box-shadow:
+    0 20px 70px #000;
+}
+
+.heroCard h1 {
+  font-size: 36px;
+  color: #eacb88;
+  margin: 0 0 8px;
+}
+
+.heroCard p {
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+.gold {
+  color: #e9c77c;
+}
+
+/* SEÇÕES */
+
+.section {
+  padding: 60px 20px;
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 32px;
+  color: #e9c77c;
+  margin: 0 0 20px;
+}
+
+.section p {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.details {
+  display: grid;
+  gap: 14px;
+  margin: 28px auto;
+}
+
+.card {
+  border: 1px solid #c7954d70;
+
+  background:
+    linear-gradient(
+      145deg,
+      #310008,
+      #140003
+    );
+
+  padding: 22px;
+  border-radius: 18px;
+}
+
+.big {
+  font-size: 26px;
+  color: #f0d393;
+}
+
+/* VALORES */
+
+.prices {
+  display: grid;
+  gap: 16px;
+}
+
+.price h3 {
+  font-size: 25px;
+  color: #f0d393;
+  margin: 0 0 10px;
+}
+
+.price strong {
+  color: #fff;
+}
+
+/* FOTO */
+
+.portrait {
+  min-height: 78svh;
+
+  background:
+    url('convite-final.png')
+    center 49% / 300% auto
+    no-repeat;
+
+  border-top: 1px solid #b8864660;
+  border-bottom: 1px solid #b8864660;
+}
+
+.fun {
+  font-size: 21px;
+  font-style: italic;
+  color: #f0d393;
+}
+
+/* BOTÃO */
+
+.cta {
+  display: inline-block;
+
+  margin-top: 20px;
+  padding: 15px 22px;
+
+  border: 1px solid #e6c678;
+  border-radius: 999px;
+
+  color: #fff;
+  text-decoration: none;
+
+  background: #650914;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 40px 20px 70px;
+  text-align: center;
+
+  color: #d9c9bd;
+  font-size: 13px;
+}
+
+/* ANIMAÇÕES */
+
+.fade {
+  opacity: 0;
+  transform: translateY(18px);
+
+  transition: .8s;
+}
+
+.fade.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media(min-width:700px) {
+
+  .prices {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero {
+    background-size: 190% auto;
+  }
+
+  .portrait {
+    background-size: 190% auto;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     CAPA / ENVELOPE
+========================= -->
+
+<main id="cover" class="screen">
+
+  <div class="envelope" onclick="openInvite()">
+
+    <div class="front">
+
+      <div class="eyebrow">
+        CONVITE ESPECIAL DE
+      </div>
+
+      <div class="name">
+        HELOISA<br>
+        FERNANDA GALVÃO<br>
+        ROMUALDO
+      </div>
+
+      <div class="degree">
+        FORMATURA EM DIREITO
+      </div>
+
+      <div class="seal">
+        ⚜
+      </div>
+
+      <div class="tap">
+        TOQUE PARA ABRIR
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- =========================
+     CONVITE
+========================= -->
+
+<div id="invite" class="invite">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="heroCard fade">
+
+    <div class="gold">
+      É OFICIAL!
+    </div>
+
+    <h1>
+      Direito
+    </h1>
+
+    <p>
+      Mais que um diploma,<br>
+      <strong>
+        é a realização de um sonho!
+      </strong>
+    </p>
+
+    <p>
+      Heloisa Fernanda Galvão Romualdo
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- MENSAGEM -->
+
+<section class="section fade">
+
+  <h2>
+    Convite
+  </h2>
+
+  <p>
+    Entre sonhos, aprendizados e incontáveis desafios,
+    escrevi um capítulo que hoje se transforma em conquista.
+  </p>
+
+  <p>
+    E com imensa alegria, convido você para celebrar
+    minha formatura em Direito e tornar esse momento
+    ainda mais especial.
+  </p>
+
+  <p class="gold">
+    Obrigada por todo o apoio durante essa caminhada!
+  </p>
+
+</section>
+
+
+<!-- DATA / HORÁRIO / LOCAL -->
+
+<section class="section fade">
+
+  <h2>
+    16 de janeiro de 2027
+  </h2>
+
+  <div class="details">
+
+    <div class="card">
+
+      <div class="big">
+        Jantar • 21h00 às 06h00
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="big">
+        Baile • 23h59 às 06h00
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="big">
+        Centro de Eventos
+      </div>
+
+      <p>
+        Harmonia Clube de Campo<br>
+        Umuarama – PR
+      </p>
+
+    </div>
+
+  </div>
+
+  <p class="fun">
+    “Será um prazer ter você comigo neste momento único!”
+  </p>
+
+</section>
+
+
+<!-- FOTO -->
+
+<div class="portrait"></div>
+
+
+<!-- FESTA -->
+
+<section class="section fade">
+
+  <h2>
+    Agora vamos comemorar!
+  </h2>
+
+  <p class="fun">
+    Open food, open bar e muita música até o amanhecer.
+  </p>
+
+  <p>
+    Depois de tantos códigos, processos, provas e surtos…
+    <strong>
+      agora é hora de brindar!
+    </strong>
+  </p>
+
+</section>
+
+
+<!-- CRIANÇAS -->
+
+<section class="section fade">
+
+  <h2>
+    Crianças
+  </h2>
+
+  <div class="details">
+
+    <div class="card">
+
+      <div class="big">
+        Até 5 anos
+      </div>
+
+      <p>
+        Não pagam e não precisam de convite.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="big">
+        De 6 a 10 anos
+      </div>
+
+      <p>
+        Pagam meia-entrada.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DRESS CODE -->
+
+<section class="section fade">
+
+  <h2>
+    Dress code
+  </h2>
+
+  <div class="card">
+
+    <div class="big">
+      Traje: esporte fino
+    </div>
+
+    <p>
+      Venha elegante, mas acima de tudo,
+      venha para se divertir e celebrar comigo!
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- VALORES -->
+
+<section class="section fade">
+
+  <h2>
+    Valores dos convites
+  </h2>
+
+  <p class="fun">
+    Uma noite dessas não tem preço…
+    mas o buffet mandou a conta. 😄
+  </p>
+
+  <p>
+    Os valores abaixo correspondem aos convites adicionais
+    para compartilhar comigo esta data tão especial.
+  </p>
+
+
+  <div class="prices">
+
+
+    <!-- JANTAR -->
+
+    <div class="card price">
+
+      <h3>
+        Jantar
+      </h3>
+
+      <p>
+        21h00 às 06h00
+      </p>
+
+      <p>
+
+        <strong>
+          Inteira
+        </strong>
+
+        <br>
+
+        R$ 520,00 à vista / boleto
+
+        <br>
+
+        R$ 572,00 em até 12x no cartão
+
+      </p>
+
+
+      <p>
+
+        <strong>
+          Meia
+        </strong>
+
+        <br>
+
+        R$ 260,00 à vista / boleto
+
+        <br>
+
+        R$ 286,00 em até 12x no cartão
+
+      </p>
+
+    </div>
+
+
+    <!-- BAILE -->
+
+    <div class="card price">
+
+      <h3>
+        Baile
+      </h3>
+
+      <p>
+        23h59 às 06h00
+      </p>
+
+      <p>
+
+        <strong>
+          Inteira
+        </strong>
+
+        <br>
+
+        R$ 440,00 à vista / boleto
+
+        <br>
+
+        R$ 484,00 em até 12x no cartão
+
+      </p>
+
+
+      <p>
+
+        <strong>
+          Meia
+        </strong>
+
+        <br>
+
+        R$ 220,00 à vista / boleto
+
+        <br>
+
+        R$ 242,00 em até 12x no cartão
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <p class="gold">
+    Você faz parte dessa conquista.
+    Conto com a sua presença!
+  </p>
+
+</section>
+
+
+<footer class="footer">
+
+  Heloisa Fernanda Galvão Romualdo
+  • Direito •
+  16.01.2027
+
+</footer>
+
+</div>
+
+
+<script>
+
+function openInvite() {
+
+  document
+    .getElementById('cover')
+    .style.display = 'none';
+
+  document
+    .getElementById('invite')
+    .classList.add('show');
+
+  window.scrollTo(0,0);
+
+  setTimeout(observe,80);
+}
+
+
+function observe() {
+
+  const io = new IntersectionObserver(
+
+    entries => entries.forEach(entry => {
+
+      if(entry.isIntersecting) {
+        entry.target.classList.add('in');
+      }
+
+    }),
+
+    {
+      threshold: .15
+    }
+
+  );
+
+  document
+    .querySelectorAll('.fade')
+    .forEach(element => io.observe(element));
+
+}
+
+</script>
+
+</body>
+</html>
